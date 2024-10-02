@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:personal_finance_managemnt/model/income.dart';
@@ -32,6 +33,14 @@ class IncomeController extends GetxController {
         date: DateTime.now());
     incomes.add(newIncome);
     saveIncomes();  
+    // Show success snackbar
+    // Get.snackbar(
+    //   'Success',
+    //   'Income added successfully!',
+       
+    //   backgroundColor: Colors.green,
+    //   colorText: Colors.white,
+    // );
   }
 
   // Edit income
@@ -42,12 +51,26 @@ class IncomeController extends GetxController {
         description: description,
         date: incomes[index].date);
     saveIncomes(); 
+    // Get.snackbar(
+    //   'Success',
+    //   'Income edited successfully!',
+    //   snackPosition: SnackPosition.BOTTOM,
+    //   backgroundColor: Colors.blue,
+    //   colorText: Colors.white,
+    // );
   }
 
   // Delete income
   void deleteIncome(int index) {
     incomes.removeAt(index);
     saveIncomes();  
+    // Get.snackbar(
+    //   'Success',
+    //   'Income deleted successfully!',
+    //   snackPosition: SnackPosition.BOTTOM,
+    //   backgroundColor: Colors.red,
+    //   colorText: Colors.white,
+    // );
   }
 
   // Save incomes to SharedPreferences

@@ -26,7 +26,7 @@ class IncomeView extends StatelessWidget {
             child: Obx(() {
               final totalIncome = incomeController.getTotalIncome();
               return Text(
-                'Total Income: \$${totalIncome.toStringAsFixed(2)}',
+                'Total Income: ৳${totalIncome.toStringAsFixed(2)}',
                 style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -55,7 +55,7 @@ class IncomeView extends StatelessWidget {
                             tileColor: Colors.grey[200],
                             contentPadding: const EdgeInsets.all(12.0),
                             title: Text(
-                              '\$${income.amount.toStringAsFixed(2)}',
+                              '৳${income.amount.toStringAsFixed(2)}',
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),

@@ -69,10 +69,13 @@ class LoginController extends GetxController {
         // Navigate to Home screen
         Get.offAll(const AppBottomNavigationBar());
       } else {
-        Get.snackbar("Error", "Invalid email or password");
+        Get.snackbar("Error", "Invalid email or password", backgroundColor: Colors.red, colorText: Colors.white);
       }
     }
   }
+
+
+   
 }
 
 

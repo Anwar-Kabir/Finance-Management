@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        '\$${totalIncome.toStringAsFixed(2)}',
+                        '৳${totalIncome.toStringAsFixed(2)}',
                         style: const TextStyle(fontSize: 22),
                       ),
                     ),
@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        '\$${totalExpense.toStringAsFixed(2)}',
+                        '৳${totalExpense.toStringAsFixed(2)}',
                         style: const TextStyle(fontSize: 22),
                       ),
                     ),
@@ -94,7 +94,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        '\$${currentBalance.toStringAsFixed(2)}',
+                        '৳${currentBalance.toStringAsFixed(2)}',
                         style: const TextStyle(fontSize: 22),
                       ),
                     ),
@@ -115,7 +115,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       subtitle: Text(
-                        '\$${currentBalance.toStringAsFixed(2)}',
+                        '৳${currentBalance.toStringAsFixed(2)}',
                         style: const TextStyle(fontSize: 22),
                       ),
                     ),

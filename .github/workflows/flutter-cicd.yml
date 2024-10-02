@@ -1,0 +1,147 @@
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+  push:
+    branches:
+      - main
+      - master
+      - develop
+
+name: "Build & Release APK"
+
+jobs:
+  build:
+    name: Build APK on Windows
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '12'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          architecture: x64
+
+      - run: flutter pub get
+
+      - run: flutter build apk --release --split-per-abi
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: apk
+          path: build/app/outputs/apk/release/
+
+      - name: Push APK to Releases
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/apk/release/*"
+          tag: v1.0.${{ github.run_number }}
+          token: ${{ secrets.TOKEN }}
+
+
+
+# =====>on mac os code for ci cd 
+# on:
+#   pull_request:
+#     branches:
+#       - main
+#       - master
+#   push:
+#     branches:
+#       - main
+#       - master
+#       - develop
+
+# name: "Build & Release"
+
+# jobs:
+#   android:
+#     name: Build & Release APK
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+      
+#       - uses: actions/setup-java@v3
+#         with:
+#           distribution: 'zulu'
+#           java-version: '12'
+      
+#       - uses: subosito/flutter-action@v2
+#         with:
+#           channel: 'stable'
+#           architecture: x64
+
+#       - run: flutter pub get
+      
+#       - run: flutter build apk --release --split-per-abi
+
+#       - name: Push APK to Releases
+#         uses: ncipollo/release-action@v1
+#         with:
+#           artifacts: "build/app/outputs/apk/release/*"
+#           tag: v1.0.${{ github.run_number }}
+#           token: ${{ secrets.TOKEN }}
+
+#   ios:
+#     name: Build & Release IPA
+#     runs-on: macos-latest
+#     steps:
+#       - uses: actions/checkout@v3
+      
+#       - uses: actions/setup-java@v3
+#         with:
+#           distribution: 'zulu'
+#           java-version: '12'
+      
+#       - uses: subosito/flutter-action@v2
+#         with:
+#           channel: 'stable'
+#           architecture: x64
+
+#       - run: flutter pub get
+
+#       - run: |
+#           flutter build ios --no-codesign
+#           cd build/ios/iphoneos
+#           mkdir Payload
+#           cd Payload
+#           ln -s ../Runner.app
+#           cd ..
+#           zip -r app.ipa Payload
+
+#       - name: Push IPA to Releases
+#         uses: ncipollo/release-action@v1
+#         with:
+#           artifacts: "build/ios/iphoneos/app.ipa"
+#           tag: v1.0.${{ github.run_number }}
+#           token: ${{ secrets.TOKEN }}
+
+#   windows:
+#     name: Build & Release Windows
+#     runs-on: windows-latest
+#     steps:
+#       - uses: actions/checkout@v3
+      
+#       - uses: subosito/flutter-action@v2
+#         with:
+#           channel: 'stable'
+#           architecture: x64
+
+#       - run: flutter pub get
+      
+#       - run: flutter build windows --release
+
+#       - name: Push Windows Binary to Releases
+#         uses: ncipollo/release-action@v1
+#         with:
+#           artifacts: "build/windows/runner/Release/*"
+#           tag: v1.0.${{ github.run_number }}
+#           token: ${{ secrets.TOKEN }}

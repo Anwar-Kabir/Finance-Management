@@ -54,6 +54,8 @@ class SplashController extends GetxController {
       Get.offAll(() => const Login());
     }
   }
+
+ 
 }
 
 

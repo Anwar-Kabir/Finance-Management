@@ -22,7 +22,7 @@ class Signup extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const SizedBox(height: 30),
+              const SizedBox(height: 100),
               const Text(
                 'Sign Up',
                 style: TextStyle(

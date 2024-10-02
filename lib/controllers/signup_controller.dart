@@ -79,13 +79,15 @@ class SignupController extends GetxController {
       await prefs.setString('password', passwordController.text);
 
      
-      Get.snackbar("Success", "Sign up successful!");
+      Get.snackbar("Success", "Sign up successful!", backgroundColor: Colors.green, colorText: Colors.white);
 
       
       Get.offAll(const Login());
     } else {
        
-      Get.snackbar("Error", "Please complete the form");
+      Get.snackbar("Error", "Please complete the form", backgroundColor: Colors.red, colorText: Colors.white);
     }
   }
+
+  
 }

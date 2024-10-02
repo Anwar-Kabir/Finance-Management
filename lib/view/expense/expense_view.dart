@@ -26,7 +26,7 @@ class ExpenseView extends StatelessWidget {
             child: Obx(() {
               final totalExpense = expenseController.getTotalExpenses();
               return Text(
-                'Total Expenses: \$${totalExpense.toStringAsFixed(2)}',
+                'Total Expenses: ৳${totalExpense.toStringAsFixed(2)}',
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -64,7 +64,7 @@ class ExpenseView extends StatelessWidget {
                           child: ListTile(
                             contentPadding: const EdgeInsets.all(16.0),
                             title: Text(
-                              '\$${expense.amount.toStringAsFixed(2)}',
+                              '৳${expense.amount.toStringAsFixed(2)}',
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold),
                             ),

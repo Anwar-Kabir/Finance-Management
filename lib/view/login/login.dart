@@ -36,14 +36,14 @@ class LoginState extends State<Login> {
         await prefs.setBool('isLoggedIn', true);
 
         Get.off(() => const AppBottomNavigationBar());
-        Get.snackbar("Success", "Login Successful");
+        Get.snackbar("Success", "Login Successful", backgroundColor: Colors.green, colorText: Colors.white);
       } else {
 
-        Get.snackbar("Error", "Invalid email or password");
+        Get.snackbar("Error", "Invalid email or password", backgroundColor: Colors.red, colorText: Colors.white);
       }
     } else {
 
-      Get.snackbar("Error", "Please complete the form");
+      Get.snackbar("Error", "Please complete the form", backgroundColor: Colors.red, colorText: Colors.white);
     }
   }
 
@@ -57,7 +57,7 @@ class LoginState extends State<Login> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const SizedBox(height: 30),
+              const SizedBox(height: 100),
               const Text(
                 'Login',
                 style: TextStyle(
